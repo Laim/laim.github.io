@@ -1,0 +1,43 @@
+# ----------------------------------------
+# Jekyll & GitHub Pages .gitignore
+# ----------------------------------------
+
+# Site output
+/_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+
+# Ruby
+/vendor/
+/Gemfile.lock
+
+# Environment & local configs
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Node dependencies (if using npm or yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# VS Code & editors
+.vscode/
+.idea/
+
+# Logs & temp files
+*.log
+*.tmp
+*.swp
+
+# OS-specific
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Optional: build artifacts
+.cache/
+.tmp/

@@ -1,0 +1,131 @@
+---
+layout: global
+---
+<section class="pb-5 hero-bg">
+    <div class="row align-items-center g-5">
+        <div class="col-md-7">
+            <h1 class="fw-bold display-5 mb-3">
+                <span class="text-accent">{{ page.title }}</span>
+            </h1>
+
+            <div id="post-metadata">
+                {% if page.initial-release %}
+                <time class="mckl-muted" datetime="{{ page.date | date_to_xmlschema  }}">{{ page.initial-release | date_to_long_string }}</time>
+                <span class="mckl-separator-dot"></span>
+                {% endif %}
+                
+                {% if page.status == "inactive" %}
+                <span class="badge text-bg-danger">
+                    Inactive
+                </span>
+                {% elsif page.status == "cancelled" %}
+                <span class="badge text-bg-danger">
+                    Cancelled
+                </span>
+                {% elsif page.status == "beta" %}
+                <span class="badge text-bg-secondary">
+                    Beta
+                </span>
+                {% elsif page.status == "lost" %}
+                <span class="badge text-bg-secondary">
+                    Source Lost
+                </span>
+                {% elsif page.status == "unreleased" %}
+                <span class="badge text-bg-info">
+                    Unreleased
+                </span>
+                {% elsif page.status == "sunsetted" %}
+                <span class="badge text-bg-danger">
+                    Sunsetted
+                </span>
+                {% else %}
+                <span class="badge text-bg-success">
+                    In Development
+                </span>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="main-content" class="container-custom py-5">
+    <div class="row g-4">
+
+        <section class="project-information d-flex flex-column flex-md-row" id="{{ page.project_id}}-information">
+            <section class="col-12 col-md-8 flex-shrink-0 me-md-2 mb-3 mb-md-0">
+                <div class="mckl-panel">
+                    <div class="card-body">
+                        {{ content }}
+                    </div>
+                </div>
+            </section>
+
+            <aside class="col-12 col-md-4">
+                <div class="card p-4 border-0 quick-card">
+
+                    {% if page.initial-release %}
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-calendar"></i>
+                        </div>
+                        <div>
+                            <div class="small text-muted">Creation Date</div>
+                            <div class="fw-semibold">
+                                {{ page.initial-release | date_to_string }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.language %}
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <div class="small text-muted">Language</div>
+                            <div class="fw-semibold">
+                                {{ page.language }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.download %}
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-download"></i>
+                        </div>
+                        <div>
+                            <div class="small text-muted">Download</div>
+                            <div class="fw-semibold">
+                                <a href="{{ page.download }}">
+                                    {{ page.download-label | default: "Download" }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.license %}
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <div>
+                            <div class="small text-muted">License</div>
+                            <div class="fw-semibold">
+                                {{ page.license }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </aside>
+        </section>
+
+    </div>
+</section>

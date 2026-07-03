@@ -1,0 +1,23 @@
+<footer class="container-custom">
+  <div class="footer-inner">
+    <div class="footer-flag" aria-hidden="true">
+      <span class="saltire">
+        <img src="{{ site.url }}/assets/site-images/scotland-flag.png" height="32" />
+      </span>
+    </div>
+
+    <p class="footer-copy">
+      &copy; <span id="start-year" title="[]"></span>–<span id="current-year" title="[]"></span>
+      &nbsp;·&nbsp; Made in Scotland &nbsp;·&nbsp; All rights reserved.
+    </p>
+
+    <a href="{{ site.url }}/contact" class="footer-contact">Contact Me</a>
+  </div>
+</footer>
+
+{% if page.layout == "socials" %}
+<script src="{{ site.url }}/assets/js/social-search.js"></script>
+{% endif %}
+
+<script src="{{ site.url }}/assets/js/site.js"></script>
+<script src="{{ site.url }}/assets/js/lib/bootstrap.bundle.min.js"></script>

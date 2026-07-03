@@ -1,0 +1,145 @@
+---
+layout: global
+---
+
+<section class="pb-5 hero-bg">
+    <div class="row align-items-center g-5">
+
+        <div class="col-md-7">
+            <h1 class="fw-bold display-5 mb-3">
+                <span class="text-accent">Contact Me</span>
+            </h1>
+
+            <p class="text-muted mb-4">
+                If a platform disappears, gets blocked, or I stop using it, this page is the definitive "where else to find me".
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="main-content" class="container-custom">
+
+    <!-- FILTER -->
+    <section class="section-filter p-4 mb-2">
+        <div class="row g-3 align-items-end">
+
+            <div class="col-md">
+                <label class="form-label small text-muted">Search</label>
+                <input id="socialSearch"
+                       type="text"
+                       class="form-control modern-input"
+                       placeholder="github, steam, @lyeuhm, gaming...">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label small text-muted">Scope</label>
+                <select id="socialScope" class="form-select modern-input">
+                    <option value="all">Everything</option>
+                    <option value="primary">Primary</option>
+                    <option value="backup">Backup</option>
+                    <option value="limited">Limited</option>
+                </select>
+            </div>
+
+        </div>
+    </section>
+
+    {% assign socials = site.data.socials %}
+
+    {% for group in socials %}
+
+    <section class="mb-5 socials-group p-4" id="{{ group[0] }}" data-scope="{{ group[0] }}">
+
+        <div class="section-heading mb-4">
+
+            <div>
+                <h2 class="fw-bold mb-1 text-capitalize">
+                    {{ group[0] }}
+                </h2>
+
+                <p class="text-muted mb-0">
+                    {% case group[0] %}
+                        {% when "primary" %}
+                            The platforms I actually use regularly.
+                        {% when "backup" %}
+                            Still alive, just less frequently checked.
+                        {% when "limited" %}
+                            Platforms I do not trust to exist forever.
+                    {% endcase %}
+                </p>
+            </div>
+
+            {% if group[0] == "primary" %}
+                <span class="pill">Recommended</span>
+            {% endif %}
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for item in group[1] %}
+
+            <div class="col-md-6">
+
+                <a class="social-card {% if group[0] == 'limited' %}social-card-warning{% endif %}"
+                   href="{{ item.url }}"
+                   target="_blank"
+                   rel="noopener"
+                   data-name="{{ item.name | downcase | replace: ' / ', '-' }}"
+                   data-handle="{{ item.handle }}"
+                   data-type="{{ group[0] }}">
+
+                    <div class="social-card-top">
+
+                        <div class="social-brand-icon">
+
+                            {% if item.icon == "custom-bluesky" %}
+                                <svg class="social-brand-svg" fill="none" viewBox="0 0 64 57">
+                                    <path fill="#565656" d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z"></path>
+                                </svg>
+                            {% else %}
+                                <i class="{{ item.icon }}"></i>
+                            {% endif %}
+
+                        </div>
+
+                        <span class="social-status">
+                            {{ item.status }}
+                        </span>
+
+                    </div>
+
+                    <h4 class="fw-semibold mt-4 mb-2">
+                        {{ item.name }}
+                    </h4>
+
+                    <p class="text-muted mb-4">
+                        {{ item.description }}
+                    </p>
+
+                    <div class="social-footer">
+                        <span>{{ item.handle }}</span>
+                        <span>{{ item.domain }}</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endfor %}
+
+    <!-- FOOTER NOTE -->
+    <section class="p-3">
+        <p class="small text-muted mb-0">
+            <strong>Last Updated:</strong> 07 May 2026
+        </p>
+    </section>
+
+</section>

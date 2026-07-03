@@ -1,0 +1,143 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# -------------------------------
+# Site Configuration
+# -------------------------------
+
+title: Laim McKenzie
+short-title: Laim
+email: webmaster@laim.scot
+description: >- # this means to ignore newlines until "baseurl:"
+  Hi, I'm Laim McKenzie.  I live on the North Coast of Scotland and work as a Senior ITAM Technical Consultant.  I love to code in my free time, and this website
+  is just a small area of things I've made and any yapping I want to do in a post.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://laim.scot" # the base hostname & protocol for your site, e.g. http://example.com
+timezone: "UTC"
+author: Laim McKenzie
+
+post-image-url: "/static/media/post_covers/"
+
+meta-twitter: "@lyeuhm"
+
+# -------------------------------
+# Build Settings
+# -------------------------------
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+  
+sass:
+  sass_dir: _sass
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: [local]
+  blanklines: false
+  profile: false
+  startings: [html, head, body]
+
+# -------------------------------
+# Permalinks
+# -------------------------------
+permalink: pretty
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title
+  projects:
+    output: true
+    permalink: /project/:name
+
+# -------------------------------
+# Feeds
+# -------------------------------
+feed:
+  path: feed/posts.xml # Default feed for posts
+  collections:
+    - posts
+
+# Custom feeds for additional collections
+feed_projects:
+  path: feed/projects.xml
+  collection: projects
+
+# -------------------------------
+# Defaults
+# -------------------------------
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Laim McKenzie"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# -------------------------------
+# Syntax Highlighting
+# -------------------------------
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# -------------------------------
+# If doing Windows builds, uncomment da below
+# -------------------------------
+show_excerpts: true
+repository: false
+github: [metadata]
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - private-content
+  - README.md
+  - .git
+  - .github
+  - static/certs/

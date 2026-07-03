@@ -1,0 +1,97 @@
+---
+layout: global
+---
+
+{% assign today = site.time | date: '%s' %}
+
+{% assign postDate = page.date | date: '%s' %}
+{% assign secondsSincePost = today | minus: postDate %}
+{% assign daysSincePost = secondsSincePost | divided_by: 86400 %}
+
+{% if page.updated-date %}
+  {% assign updatedDate = page.updated-date | date: '%s' %}
+  {% assign secondsSinceUpdate = today | minus: updatedDate %}
+  {% assign daysSinceUpdate = secondsSinceUpdate | divided_by: 86400 %}
+{% endif %}
+
+<section class="pb-3 hero-bg">
+    <div class="row align-items-center g-5">
+        <div class="col">
+            <h1 class="fw-bold display-5 mb-3">
+                <span class="text-accent">{{ page.title }}</span>
+            </h1>
+
+            <div id="post-metadata">
+                <time class="mckl-muted" datetime="{{ page.date | date_to_xmlschema  }}">{{ page.date | date_to_long_string }}</time>
+                <span class="mckl-separator-dot"></span>
+                
+                <a class="single-post-category" href="{{ site.url }}/category/{{ page.category | replace: ' ', '-'  | downcase }}">
+                    {{ page.category }}
+                </a>
+                
+                {% if page.updated-date %}
+                <!-- If post has been edited -->
+                <span class="mckl-separator-dot"></span>
+                
+                <span class="mckl-muted">
+                    Updated: <time datetime="{{ page.updated-date | date_to_xmlschema  }}">{{ page.updated-date | date_to_long_string }}</time>
+                </span>
+                <!-- If post has been edited -->
+                {% endif %}
+            </div>
+
+            <div id="post-tags" class="mt-3">
+                {% for tag in page.tags %}
+                <span class="pill-sm">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% assign showAgeNotice = false %}
+
+        {% if page.category != "Year in Review" %}
+            {% if page.updated-date %}
+                {% if daysSincePost > 364 and daysSinceUpdate > 364 %}
+                    {% assign showAgeNotice = true %}
+                {% endif %}
+            {% elsif daysSincePost > 364 %}
+                {% assign showAgeNotice = true %}
+            {% endif %}
+        {% endif %}
+
+        {% assign showMigrationNotice = page.was-migrated %}
+        {% assign showDeprecatedNotice = page.deprecated %}
+
+        {% if showAgeNotice or showMigrationNotice or showDeprecatedNotice %}
+        <div id="post-notices" style="margin-top: 10px !important; margin-bottom: -15px !important;">
+
+            {% if showAgeNotice %}
+            <div class="alert alert-warning" id="age-notice">
+                The post you are viewing is more than a year old and has not been checked.  
+                The content within may be incorrect, outdated or no longer working.  
+                Please double check for newer posts if available before proceeding.
+            </div>
+            {% endif %}
+
+            {% if showMigrationNotice %}
+            <div class="alert alert-warning" id="migration-notice">
+                The post you are viewing was created on an older version of this website and has not been checked.
+                The content may not appear as intended with incorrect formatting or missing images.
+            </div>
+            {% endif %}
+
+            {% if showDeprecatedNotice %}
+            <div class="alert alert-danger" id="deprecated-notice">
+                The product this post is about has been deprecated and is no longer in active development.
+            </div>
+            {% endif %}
+
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<section id="main-content" class="container-custom py-5">       
+    {{ content }}
+</section>

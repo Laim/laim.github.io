@@ -1,0 +1,68 @@
+primary:
+  - name: GitHub
+    url: https://github.com/laim
+    handle: "@laim"
+    icon: fa-brands fa-github
+    status: Active
+    description: Open source projects, experiments and development work.
+    domain: github.com
+
+  - name: Gaming Tracker
+    url: https://gaming.laim.scot/profile
+    handle: "Cpt Autismo"
+    icon: fa-solid fa-gamepad
+    status: Daily
+    description: My personal game tracking platform and statistics dashboard.
+    domain: gaming.laim.scot
+
+  - name: Email
+    url: mailto:webmaster@laim.scot
+    handle: webmaster@laim.scot
+    icon: fa-solid fa-envelope
+    status: Preferred
+    description: Still somehow the most reliable communication platform.
+    domain: Email
+
+  - name: Steam
+    url: https://steamcommunity.com/id/lyeuhm
+    handle: "@lyeuhm"
+    icon: fa-brands fa-steam
+    status: Active
+    description: Games, screenshots and probably unhealthy playtime numbers.
+    domain: steamcommunity.com
+
+  - name: Instagram
+    url: https://instagram.com/lyeuhm
+    handle: "@lyeuhm"
+    icon: fa-brands fa-instagram
+    status: Active
+    description: Life innit?
+    domain: instagram.com
+
+
+backup:
+  - name: YouTube
+    url: https://www.youtube.com/@lyeuhm
+    handle: "@lyeuhm"
+    icon: fa-brands fa-youtube
+    status: Occasional
+    description: Old uploads, experiments and occasional random videos.
+    domain: youtube.com
+
+  - name: Bluesky
+    url: https://bsky.app/profile/laim.bsky.social
+    handle: "@laim.bsky.social"
+    icon: custom-bluesky
+    status: Semi Active
+    description: Mostly technology, infrastructure and development thoughts.
+    domain: bsky.app
+
+
+limited:
+  - name: Twitter / X
+    url: https://twitter.com/lyeuhm
+    handle: "@lyeuhm"
+    icon: fa-brands fa-twitter
+    status: At Risk
+    description: Still exists. Somehow.
+    domain: twitter.com

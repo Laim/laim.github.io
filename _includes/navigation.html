@@ -1,0 +1,53 @@
+<nav class="py-4">
+  <div class="container-custom">
+
+    <!-- Mobile Nav -->
+    <div class="d-flex d-md-none justify-content-between align-items-center">
+
+      <div class="text-center">
+        <img src="{{ site.url }}/assets/site-images/scotland-flag.png" height="32" />
+        <div class="fw-bold">
+            Laim
+        </div>
+      </div>
+
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Nav >> Menu -->
+    <div class="collapse mt-4 d-md-none" id="mobileMenu">
+      <div class="d-flex flex-column gap-2">
+        <a href="{{ site.url }}/" class="pill text-center">Home</a>
+        <a href="{{ site.url }}/blog" class="pill text-center">Blog</a>
+        <a href="{{ site.url }}/projects" class="pill text-center">Projects</a>
+        <a href="{{ site.url }}/me" class="pill text-center">Me</a>
+      </div>
+    </div>
+
+    <!-- DESKTOP -->
+    <div class="d-none d-md-flex justify-content-center align-items-center gap-4">
+
+      <!-- Left -->
+      <div class="d-flex gap-3">
+        <a href="{{ site.url }}/" class="pill">Home</a>
+        <a href="{{ site.url }}/blog" class="pill">Blog</a>
+      </div>
+
+      <!-- Logo -->
+      <div class="text-center mx-4">
+        <img src="{{ site.url }}/assets/site-images/scotland-flag.png"  height="32">
+        <div class="fw-bold fs-5">Laim</div>
+      </div>
+
+      <!-- Right -->
+      <div class="d-flex gap-3">
+        <a href="{{ site.url }}/projects" class="pill">Projects</a>
+        <a href="{{ site.url }}/me" class="pill">Me</a>
+      </div>
+
+    </div>
+
+  </div>
+</nav>

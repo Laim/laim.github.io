@@ -1,0 +1,254 @@
+/* -----------------------------------------------------
+   Responsive Rouge Highlight Theme for laim.scot
+----------------------------------------------------- */
+
+pre.highlight {
+  background: var(--mckl-card-bg);
+  color: var(--mckl-font-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  /* overflow handled by figure.highlight */
+  overflow: visible;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border: 1px solid rgba(253, 218, 13, 0.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+//   transition: background var(--transition), box-shadow var(--transition);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* For very long code lines — prevent horizontal layout breaks */
+pre.highlight {
+  white-space: pre;
+  margin: 0;
+}
+
+/* Inline code (e.g. `code`) */
+code.highlighter-rouge {
+  background: #000000;
+  color: #FFFF;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* Syntax colors */
+.highlight .c      { color: var(--mckl-muted); font-style: italic; }
+.highlight .err    { color: #ff5555; background-color: #330000; }
+.highlight .k      { color: #80b3ff; }
+.highlight .o      { color: #e6edf3; }
+.highlight .cm     { color: var(--mckl-muted); font-style: italic; }
+.highlight .cp     { color: #8be9fd; }
+.highlight .c1     { color: var(--mckl-muted); font-style: italic; }
+.highlight .cs     { color: #9da7b2; font-weight: 600; }
+
+.highlight .gd     { color: #ffbaba; background-color: #2a0000; }
+.highlight .gi     { color: #b6ffb6; background-color: #001a00; }
+.highlight .gh     { color: var(--mckl-highlight); font-weight: bold; }
+
+.highlight .kt     { color: #ff9d00; }
+.highlight .na     { color: #9cdcfe; }
+.highlight .nb     { color: #4ec9b0; }
+.highlight .nc     { color: #ffb454; }
+.highlight .nf     { color: #82aaff; }
+.highlight .nt     { color: #569cd6; }
+.highlight .nv     { color: #e6edf3; }
+
+.highlight .s      { color: #98c379; }
+.highlight .sd     { color: #98c379; font-style: italic; }
+.highlight .se     { color: #d19a66; }
+.highlight .ss     { color: #56b6c2; }
+
+.highlight .m      { color: #b5cea8; }
+.highlight .il     { color: #b5cea8; }
+
+/* Line numbers table */
+.highlight table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.highlight .gutter {
+  color: var(--mckl-font-color-dark);
+  text-align: right;
+  padding-right: 1em;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 2.5em;
+}
+
+pre.highlight .code {
+  padding-left: 1em;
+}
+
+/* Hover & focus */
+// pre.highlight:hover {
+//   background-color: var(--mckl-scotland-tint-alt);
+//   box-shadow: 0 0 12px rgba(253, 218, 13, 0.15);
+// }
+
+/* Keep a little space after blocks */
+div.highlight {
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------
+   Responsive adjustments
+--------------------------------------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+  /* target the code element sizing, not the container */
+  pre.highlight {
+    font-size: 0.9rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  pre.highlight {
+    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .highlight pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
+
+/* Mobile portrait / small screens */
+@media (max-width: 480px) {
+  pre.highlight {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 0.7rem 0.8rem;
+  }
+
+  code.highlighter-rouge {
+    font-size: 0.85em;
+  }
+}
+
+/* ============================================
+   FIX: Make the Rouge <figure> the scroll box
+   (Rouge wraps a <table> inside <pre>)
+============================================ */
+
+/* Scroll container lives on the <figure> */
+figure.highlight {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1rem 0;
+  padding: 0;                 /* avoid double padding with pre */
+  border-radius: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent the nested table from stretching the page */
+figure.highlight table,
+figure.highlight .rouge-table {
+  width: max-content;         /* shrink to content width */
+  min-width: 100%;            /* but not smaller than container */
+  border-collapse: collapse;
+}
+
+/* Ensure the <pre> doesn't create its own scrollbars */
+figure.highlight pre {
+  margin: 0;
+  white-space: pre;
+  width: max-content;
+  min-width: 100%;
+  overflow: visible;          /* let figure handle scrolling */
+  background: transparent;    /* background already on pre.highlight above */
+}
+
+/* Optional: nicer horizontal scrollbar */
+figure.highlight::-webkit-scrollbar {
+  height: 8px;
+}
+figure.highlight::-webkit-scrollbar-thumb {
+  background: rgba(253, 218, 13, 0.25);
+  border-radius: 4px;
+}
+figure.highlight:hover::-webkit-scrollbar-thumb {
+  background: rgba(253, 218, 13, 0.5);
+}
+
+/* ---------------------------------------------
+   Fix overflow for Rouge <div class="highlight"> structure
+   (used when syntax block = <div class="language-xxx highlighter-rouge">)
+--------------------------------------------- */
+
+/* Let the flex item shrink inside Bootstrap .d-flex container */
+main.container.d-flex > *,
+.container.d-flex > * {
+  min-width: 0;
+}
+
+/* Target all Rouge code blocks */
+.language-sql.highlighter-rouge,
+.language-bash.highlighter-rouge,
+.language-powershell.highlighter-rouge,
+.language-js.highlighter-rouge,
+.language-csharp.highlighter-rouge,
+.language-json.highlighter-rouge,
+.language-html.highlighter-rouge,
+.language-xml.highlighter-rouge,
+.language-yaml.highlighter-rouge,
+.highlighter-rouge {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* display: block; */
+}
+
+/* Scrollbar container lives on the .highlight div */
+.language-sql.highlighter-rouge > .highlight,
+.highlighter-rouge > .highlight {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(253, 218, 13, 0.05);
+  background: var(--mckl-card-bg);
+//   box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent <pre> from stretching page width */
+.language-sql.highlighter-rouge pre.highlight,
+.highlighter-rouge pre.highlight {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  width: max-content;      /* size to content width */
+  min-width: 100%;         /* but not smaller than container */
+  overflow: visible;       /* let parent handle scrollbar */
+  white-space: pre;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* Optional: style horizontal scrollbar for all code blocks */
+.highlighter-rouge::-webkit-scrollbar,
+.language-sql.highlighter-rouge::-webkit-scrollbar {
+  height: 8px;
+}
+.highlighter-rouge::-webkit-scrollbar-thumb,
+.language-sql.highlighter-rouge::-webkit-scrollbar-thumb {
+  background: var(--mckl-scotland);
+  border-radius: 4px;
+}
+.highlighter-rouge:hover::-webkit-scrollbar-thumb,
+.language-sql.highlighter-rouge:hover::-webkit-scrollbar-thumb {
+  background: var(--mckl-scotland);
+}

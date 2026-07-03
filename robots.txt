@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /static/certs/
+Disallow: /static/affinity_files/
+
+Sitemap: https://laim.scot/sitemap.xml

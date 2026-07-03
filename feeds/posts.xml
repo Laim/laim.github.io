@@ -1,0 +1,96 @@
+---
+layout: null
+permalink: /feed/posts.xml
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+  <channel>
+
+    <!-- Site metadata -->
+    <title>{{ site.name | xml_escape }} - Articles</title>
+    <description>{{ site.description | default: "" | xml_escape }}</description>
+
+    <link>{{ site.url | append: site.baseurl }}</link>
+
+    <!-- RSS feed identity -->
+    <atom:link href="{{ site.url | append: site.baseurl }}{{ page.url }}"
+               rel="self"
+               type="application/rss+xml" />
+
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+
+    <!-- Author (site-wide) -->
+    {% if site.author %}
+      <managingEditor>
+        {% if site.author.email and site.author.name %}
+          {{ site.author.email }} ({{ site.author.name }})
+        {% else %}
+          {{ site.author | xml_escape }}
+        {% endif %}
+      </managingEditor>
+
+      <webMaster>
+        {% if site.author.email and site.author.name %}
+          {{ site.author.email }} ({{ site.author.name }})
+        {% else %}
+          {{ site.author | xml_escape }}
+        {% endif %}
+      </webMaster>
+    {% endif %}
+
+    <!-- Update hints -->
+    <sy:updatePeriod>{{ site.feed_update_period | default: "daily" | xml_escape }}</sy:updatePeriod>
+    <sy:updateFrequency>{{ site.feed_update_frequency | default: 1 | xml_escape }}</sy:updateFrequency>
+
+    <!-- Posts -->
+    {% for post in site.posts limit:50 %}
+      {% unless post.link %}
+
+      <item>
+
+        <title>{{ post.title | xml_escape }}</title>
+
+        <link>{{ site.url | append: site.baseurl }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url | append: site.baseurl }}{{ post.url }}</guid>
+
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+
+        {% if site.author %}
+        <author>
+          {% if site.author.email and site.author.name %}
+            {{ site.author.email }} ({{ site.author.name }})
+          {% else %}
+            {{ site.author | xml_escape }}
+          {% endif %}
+        </author>
+        {% endif %}
+
+        <!-- SEO-friendly excerpt -->
+        <description>
+          {{ post.excerpt | default: post.content | strip_html | xml_escape }}
+        </description>
+
+        <!-- Full content for advanced readers -->
+        <content:encoded>
+          <![CDATA[
+            {{ post.content }}
+          ]]>
+        </content:encoded>
+
+        <!-- Optional categories (improves feed discovery) -->
+        {% for cat in post.categories %}
+          <category>{{ cat | xml_escape }}</category>
+        {% endfor %}
+
+      </item>
+
+      {% endunless %}
+    {% endfor %}
+
+  </channel>
+</rss>

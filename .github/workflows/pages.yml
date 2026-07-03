@@ -1,0 +1,90 @@
+name: Deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+
+      - name: Checkout private content repo
+        uses: actions/checkout@v4
+        with:
+          repository: laim/laim.github.io-content
+          token: ${{ secrets.CONTENT_REPO_TOKEN }}
+          path: private-content
+
+      - name: Copy private content into site
+        run: |
+          rm -rf _posts _projects _drafts _post_archive static
+
+          [ -d private-content/_posts ] && cp -R private-content/_posts ./_posts || true
+          [ -d private-content/_projects ] && cp -R private-content/_projects ./_projects || true
+          [ -d private-content/_drafts ] && cp -R private-content/_drafts ./_drafts || true
+          [ -d private-content/_post_archive ] && cp -R private-content/_post_archive ./_post_archive || true
+          [ -d private-content/static ] && cp -R private-content/static ./static || true
+
+          rm -rf private-content
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # - name: Add custom domain file
+      #   run: echo "laim.scot" > CNAME
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: .
+          destination: ./_site
+
+      - name: Inspect Pages artifact contents
+        run: |
+          echo "Site size:"
+          du -sh ./_site
+
+          echo "Largest folders:"
+          du -h ./_site --max-depth=3 | sort -hr | head -50
+
+          echo "File count:"
+          find ./_site -type f | wc -l
+
+          echo "Largest files:"
+          find ./_site -type f -printf '%s %p\n' | sort -nr | head -50
+          
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+          retention-days: 1
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 900000
