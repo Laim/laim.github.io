@@ -1,221 +1,122 @@
 ---
 layout: global
 ---
+
 <section class="pb-5 hero-bg">
     <div class="row align-items-center g-5">
         <div class="col-md-7">
             <h1 class="fw-bold display-5 mb-3">
-                <span class="text-accent">About Me</span>
+                <span class="text-accent">{{ page.title }}</span>
             </h1>
 
             <p class="mb-4">
                 {{ page.intro }}
             </p>
 
-            <div class="d-flex flex-wrap gap-2">
-              <span class="pill">ITAM</span>
-              <span class="pill">Self Hosting</span>
-              <span class="pill">.NET</span>
-              <span class="pill">Docker</span>
-              <span class="pill">Gaming</span>
-              <span class="pill">DIY</span>
-            </div>
+            {% if page.tags %}
+                <div class="d-flex flex-wrap gap-2">
+                    {% for tag in page.tags %}
+                        <span class="pill">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-
-        <!-- <div class="col-md-5 text-center">
-            <img src="https://laim.scot/static/media/me/2025.jpg" class="hero-img float-end" alt="Profile">
-        </div> -->
-
     </div>
 </section>
 
-<section id="main-content" class="container-custom py-5">       
+<section id="main-content" class="container-custom py-5">
     <section class="mb-5">
         <div class="row g-5">
-
             <div class="col-md-8">
-                <h3 class="fw-semibold mb-3">
-                    About Me
-                    <span class="fw-bold mckl-small">The longer version</span>
-                </h3>
-
-                <p>
-                    I started tinkering with computers and consoles (<a href="https://en.wikipedia.org/w/index.php?title=PlayStation_3&oldid=1351272495">PS3</a>) back in 2008, mostly breaking them at that point.  The first programming language
-                    I learned was <a href="https://en.wikipedia.org/w/index.php?title=Visual_Basic_(classic)&oldid=1340478897">Visual Basic 6</a> as that was the only book's I had available to me, before 
-                    moving onto <a href="https://en.wikipedia.org/w/index.php?title=Visual_Basic_(.NET)&oldid=1345806817">VB.NET</a> sometime in 2013(ish?).  Around the
-                    time I was learning Visual Basic 6, I was also getting more interested into how websites worked and started learning <a href="https://en.wikipedia.org/w/index.php?title=PHP&oldid=1352067195">PHP</a>, which I used near
-                    enough every day until 2022, before kind of stepping away from web development for a while.
-                </p>
-
-                <p>
-                    In 2020/2021 I switched from VB.NET to <a href="https://en.wikipedia.org/w/index.php?title=C_Sharp_(programming_language)&oldid=1347180106">C#</a> and started working on my own game which I released on Steam called 
-                    <a href="https://store.steampowered.com/app/1730310/The_Lonely_Helmet/">The Lonely Helmet</a>, it was not great.
-                    Around this time I also created the first version of my own <a href="https://laim.scot/blog/i-made-a-game-tracker">Game Tracker</a>, which I have been using every day since and recently upgraded from a 
-                    unmaintanable PHP project to ASP .NET with Razor.  In my free time I also like to build physical things around the house or in my garden,
-                    of various quality and success.
-                </p>
-
-                <p>
-                    Outside of my personal life, I work at SoftwareOne as an Senior ITAM Consultant.  I started my work career at Getronics as an Apprentice in doing 
-                    Software Asset Management, before moving to Softcat in 2018 where I created quite a  few <a href="http://github.com/goosetuv">custom tools</a> to make my life easier while managing customer
-                    Snow License Manager estates.  I moved to SoftwareOne in 2022 after getting burnout from COVID-19 and needing a change, where I've been since.
-                </p>
-
-                <p>
-                    If you any questions or just want a chat, you can <a href="/contact">contact me</a> in various places.
-                </p>
-
+                {{ content }}
             </div>
 
             <div class="col-md-4">
-                <div class="card p-4 border-0 quick-card">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-map-pin"></i>
-                    </div>
-                    <div>
-                        <div class="small text-muted">Location</div>
-                        <div class="fw-semibold">Scotland</div>
-                    </div>
-                </div>
+                {% if page.quick_facts %}
+                    <div class="card p-4 border-0 quick-card">
+                        {% for fact in page.quick_facts %}
+                            <div class="d-flex align-items-center gap-3 {% unless forloop.last %}mb-3{% endunless %}">
+                                <div class="quick-icon">
+                                    <i class="fa-solid {{ fact.icon }}"></i>
+                                </div>
 
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-house-laptop"></i>
+                                <div>
+                                    <div class="small text-muted">{{ fact.label }}</div>
+                                    <div class="fw-semibold">{{ fact.value }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div>
-                        <div class="small text-muted">Role</div>
-                        <div class="fw-semibold">Senior ITAM Consultant</div>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-person-rays"></i>
-                    </div>
-                    <div>
-                        <div class="small text-muted">Focus</div>
-                        <div class="fw-semibold">Automation & Systems</div>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-center gap-3">
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-gamepad"></i>
-                    </div>
-                    <div>
-                        <div class="small text-muted">Interests</div>
-                        <div class="fw-semibold">Gaming, Self Hosting and DIY</div>
-                    </div>
-                </div>
-              </div>
+                {% endif %}
             </div>
-          </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SKILLS / STACK -->
+    {% if page.stack %}
         <section class="mb-5">
             <h3 class="fw-semibold mb-4">What I've Worked With</h3>
 
             <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="stack-block">
-                        <h6 class="mb-3">Backend</h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="pill">ASP .NET 8 & 10</span>
-                            <span class="pill">EF Core</span>
-                            <span class="pill">APIs</span>
-                            <span class="pill">PHP (until 2022)</span>
-                        </div>
-                    </div>
-                </div>
+                {% for stack_group in page.stack %}
+                    <div class="col-md-6">
+                        <div class="stack-block">
+                            <h6 class="mb-3">{{ stack_group.title }}</h6>
 
-                <div class="col-md-6">
-                    <div class="stack-block">
-                        <h6 class="mb-3">Infrastructure</h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="pill">Docker</span>
-                            <span class="pill">Linux</span>
-                            <span class="pill">Windows</span>
-                            <span class="pill">Self Hosting</span>
+                            <div class="d-flex flex-wrap gap-2">
+                                {% for item in stack_group.items %}
+                                    <span class="pill">{{ item }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="stack-block">
-                        <h6 class="mb-3">Frontend</h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="pill">Bootstrap 🥰</span>
-                            <span class="pill">Razor</span>
-                            <span class="pill">Javascript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="stack-block">
-                        <h6 class="mb-3">Other</h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="pill">Snow License Manager</span>
-                            <span class="pill">Torii HQ</span>
-                        </div>
-                    </div>
-                </div>
-          </div>
+                {% endfor %}
+            </div>
         </section>
+    {% endif %}
 
-        <!-- CURRENT FOCUS -->
+    {% if page.now %}
         <section>
             <div class="now-panel p-4 p-md-5">
                 <div class="row g-5 align-items-center">
-
                     <div class="col-md-7">
-                        <h3 class="fw-semibold mb-3">What I'm Doing Now</h3>
+                        <h3 class="fw-semibold mb-3">{{ page.now.title }}</h3>
 
                         <p class="mb-3">
-                            Currently building a personal game tracker from the ground up in ASP .NET based on my previous one, but with batter
-                            search, importing, statistics viewing, design, basically everything.
+                            {{ page.now.body }}
                         </p>
 
                         <p class="text-muted mb-4">
-                            Also working with background processing and some automation.
+                            {{ page.now.note }}
                         </p>
 
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="pill">Game Tracking</span>
-                            <span class="pill">Background Jobs</span>
-                            <span class="pill">Automation</span>
-                        </div>
+                        {% if page.now.tags %}
+                            <div class="d-flex flex-wrap gap-2">
+                                {% for tag in page.now.tags %}
+                                    <span class="pill">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
 
-              <!-- RIGHT -->
-                <div class="col-md-5">
-
-                    <div class="now-stack">
-                        <div class="now-stack-item">
-                            <span>ASP .NET</span>
-                        </div>
-                        <div class="now-stack-item">
-                            <span>EF Core</span>
-                        </div>
-                        <div class="now-stack-item">
-                            <span>Background Queues</span>
-                        </div>
-                        <div class="now-stack-item">
-                            <span>Docker</span>
-                        </div>
-                        <div class="now-stack-item">
-                            <span>APIs</span>
-                        </div>
+                    <div class="col-md-5">
+                        {% if page.now.stack %}
+                            <div class="now-stack">
+                                {% for item in page.now.stack %}
+                                    <div class="now-stack-item">
+                                        <span>{{ item }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
 
+                    {% if page.last_updated %}
+                        <p class="text-muted mckl-small">
+                            <span class="fw-bold">Last Updated:</span> {{ page.last_updated }}
+                        </p>
+                    {% endif %}
                 </div>
-
-                <p class="text-muted mckl-small">
-                    <span class="fw-bold">Last Updated:</span> 14 June 2026
-                </p>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 </section>
