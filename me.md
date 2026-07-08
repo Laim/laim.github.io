@@ -4,6 +4,8 @@ title: "About Me"
 intro: "I'm Laim, a Senior IT Asset Management Consultant based in Scotland. I spend most of my time solving messy enterprise level problems, and the rest building small apps for myself, doing DIY or gaming."
 permalink: /me/
 
+about-section-subtitle: "The longer version"
+
 tags:
   - ITAM
   - Self Hosting
@@ -52,12 +54,11 @@ stack:
 
 now:
   title: "What I'm Doing Now"
-  body: "Currently building a personal game tracker from the ground up in ASP .NET based on my previous one, but with better search, importing, statistics viewing, design, basically everything."
-  note: "Also working with background processing and some automation."
+  body: "Currently building a personal asset (Computers/Licenses/Contracts) tracker from the ground up in ASP .NET with a software normalization engine."
+  note: "Also trying to create a cross platform scanner..."
   tags:
-    - Game Tracking
-    - Background Jobs
-    - Automation
+    - Asset Tracking
+    - Cross Platform Inventory Scanner
   stack:
     - ASP .NET
     - EF Core
@@ -65,13 +66,8 @@ now:
     - Docker
     - APIs
 
-last_updated: "14 June 2026"
+last_updated: "08 July 2026"
 ---
-
-## About Me
-
-## About Me
-### The longer version
 
 I started tinkering with computers and consoles ([PS3](https://en.wikipedia.org/w/index.php?title=PlayStation_3&oldid=1351272495)) back in 2008, mostly breaking them at that point. The first programming language I learned was [Visual Basic 6](https://en.wikipedia.org/w/index.php?title=Visual_Basic_(classic)&oldid=1340478897), as that was the only book I had available to me, before moving onto [VB.NET](https://en.wikipedia.org/w/index.php?title=Visual_Basic_(.NET)&oldid=1345806817) sometime in 2013-ish. Around the time I was learning Visual Basic 6, I was also getting more interested in how websites worked and started learning [PHP](https://en.wikipedia.org/w/index.php?title=PHP&oldid=1352067195), which I used near enough every day until 2022, before stepping away from web development for a while.
 
