@@ -5,7 +5,7 @@ Source code for https://laim.scot.  This repo has been private for years but I d
 ## Usage
 
 - Clone the Repo
-- Add `_posts` and `projects`
+- Add `_posts` and `_projects`
 - Build
 
 ### Example Post

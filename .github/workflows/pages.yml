@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - master
+
+  repository_dispatch:
+    types:
+      - content_updated
+
   workflow_dispatch:
 
 permissions:
@@ -41,12 +46,9 @@ jobs:
           [ -d private-content/static ] && cp -R private-content/static ./static || true
 
           rm -rf private-content
-          
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      # - name: Add custom domain file
-      #   run: echo "laim.scot" > CNAME
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
@@ -67,7 +69,7 @@ jobs:
 
           echo "Largest files:"
           find ./_site -type f -printf '%s %p\n' | sort -nr | head -50
-          
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -87,4 +89,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
         with:
-          timeout: 900000
+          timeout: 60000
