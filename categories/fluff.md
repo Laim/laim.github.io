@@ -2,6 +2,6 @@
 layout: categories
 title: "Fluff"
 category-name: Fluff
-permalink: "/category/entertainment"
+permalink: "/category/fluff"
 description: "Just general fluff content"
 ---
