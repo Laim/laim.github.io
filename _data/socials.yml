@@ -34,11 +34,11 @@ gaming:
 
   - name: PlayStation
     url: https://psnprofiles.com/laimmckenzie
-    handle: "@lyeuhm"
+    handle: "@laimmckenzie"
     icon: fa-brands fa-playstation
     status: Active
     description: Console Gaming
-    domain: steamcommunity.com
+    domain: psnprofiles.com
 
 "custom made":
   - name: Gaming Tracker
