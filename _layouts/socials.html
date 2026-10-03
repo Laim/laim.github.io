@@ -37,6 +37,8 @@ layout: global
                 <select id="socialScope" class="form-select modern-input">
                     <option value="all">Everything</option>
                     <option value="primary">Primary</option>
+                    <option value="custom made">Custom Made</option>
+                    <option value="gaming">Gaming</option>
                     <option value="backup">Backup</option>
                     <option value="limited">Limited</option>
                 </select>
@@ -62,6 +64,10 @@ layout: global
                     {% case group[0] %}
                         {% when "primary" %}
                             The platforms I actually use regularly.
+                        {% when "custom made" %}
+                            Platforms I've made myself
+                        {% when "gaming" %}
+                            Gaming specific
                         {% when "backup" %}
                             Still alive, just less frequently checked.
                         {% when "limited" %}
@@ -138,7 +144,7 @@ layout: global
     <!-- FOOTER NOTE -->
     <section class="p-3">
         <p class="small text-muted mb-0">
-            <strong>Last Updated:</strong> 07 May 2026
+            <strong>Last Updated:</strong> 03 October 2026
         </p>
     </section>
 

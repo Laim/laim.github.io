@@ -7,14 +7,6 @@ primary:
     description: Open source projects, experiments and development work.
     domain: github.com
 
-  - name: Gaming Tracker
-    url: https://gaming.laim.scot/profile
-    handle: "Cpt Autismo"
-    icon: fa-solid fa-gamepad
-    status: Daily
-    description: My personal game tracking platform and statistics dashboard.
-    domain: gaming.laim.scot
-
   - name: Email
     url: mailto:webmaster@laim.scot
     handle: webmaster@laim.scot
@@ -22,14 +14,6 @@ primary:
     status: Preferred
     description: Still somehow the most reliable communication platform.
     domain: Email
-
-  - name: Steam
-    url: https://steamcommunity.com/id/lyeuhm
-    handle: "@lyeuhm"
-    icon: fa-brands fa-steam
-    status: Active
-    description: Games, screenshots and probably unhealthy playtime numbers.
-    domain: steamcommunity.com
 
   - name: Instagram
     url: https://instagram.com/lyeuhm
@@ -39,6 +23,39 @@ primary:
     description: Life innit?
     domain: instagram.com
 
+gaming:
+  - name: Steam
+    url: https://steamcommunity.com/id/lyeuhm
+    handle: "@lyeuhm"
+    icon: fa-brands fa-steam
+    status: Active
+    description: PC Gaming
+    domain: steamcommunity.com
+
+  - name: PlayStation
+    url: https://psnprofiles.com/laimmckenzie
+    handle: "@lyeuhm"
+    icon: fa-brands fa-playstation
+    status: Active
+    description: Console Gaming
+    domain: steamcommunity.com
+
+"custom made":
+  - name: Gaming Tracker
+    url: https://gaming.laim.scot/profile
+    handle: "Laim"
+    icon: fa-solid fa-gamepad
+    status: Daily
+    description: My personal game tracking platform and statistics dashboard.
+    domain: gaming.laim.scot
+
+  - name: Watch Tracker
+    url: https://watching.laim.scot/profile
+    handle: "Laim"
+    icon: fa-solid fa-tv
+    status: Daily
+    description: My personal watch tracking platform and statistics dashboard for TV/Movies.
+    domain: watching.laim.scot
 
 backup:
   - name: YouTube
@@ -48,14 +65,6 @@ backup:
     status: Occasional
     description: Old uploads, experiments and occasional random videos.
     domain: youtube.com
-
-  - name: Bluesky
-    url: https://bsky.app/profile/laim.bsky.social
-    handle: "@laim.bsky.social"
-    icon: custom-bluesky
-    status: Semi Active
-    description: Mostly technology, infrastructure and development thoughts.
-    domain: bsky.app
 
 
 limited:

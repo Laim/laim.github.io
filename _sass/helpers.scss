@@ -8,3 +8,30 @@
 //     overflow-x: auto;
 //     display: block;
 // }
+
+p
+{
+    font-family: "TikTok Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-variation-settings: "slnt" 0, "wdth" 100;
+}
+
+h2 
+{
+    font-family: "TikTok Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 22px;
+    font-weight: 600;
+    font-variation-settings: "slnt" 0, "wdth" 100;
+}
+
+h3
+{
+    font-family: "TikTok Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: calc(1.3rem + .6vw);
+    font-weight: 700;
+    font-variation-settings: "slnt" 0, "wdth" 100;
+}
