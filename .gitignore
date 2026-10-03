@@ -41,3 +41,7 @@ desktop.ini
 # Optional: build artifacts
 .cache/
 .tmp/
+/_post_archive
+/_posts
+/_projects
+/static
