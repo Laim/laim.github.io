@@ -76,3 +76,5 @@ In 2020/2021 I switched from VB.NET to [C#](https://en.wikipedia.org/w/index.php
 Outside of my personal life, I work at SoftwareOne as a Senior ITAM Consultant. I started my work career at Getronics as an Apprentice in Software Asset Management, before moving to Softcat in 2018 where I created quite a few [custom tools](http://github.com/goosetuv) to make my life easier while managing customer Snow License Manager estates. I moved to SoftwareOne in 2022 after getting burnout from COVID-19 and needing a change, where I've been since.
 
 If you have any questions or just want a chat, you can [contact me](/contact) in various places.
+
+Feel like it goes without saying, but all views are mine and not of the companies I work or have worked for.
